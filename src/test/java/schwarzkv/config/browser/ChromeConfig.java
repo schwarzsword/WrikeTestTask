@@ -8,6 +8,8 @@ public class ChromeConfig {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
     }
     public static WebDriver ChromeDriver() {
-        return new ChromeDriver();
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        return driver;
     }
 }

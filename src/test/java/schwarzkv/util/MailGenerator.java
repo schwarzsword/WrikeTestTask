@@ -12,8 +12,8 @@ public class MailGenerator {
         for (int i = 0; i < LEN; i++) {
             int index = (int) (AlphaNumericString.length() * Math.random());
             sb.append(AlphaNumericString.charAt(index));
-            sb.append(POSTFIX);
         }
+        sb.append(POSTFIX);
         return sb.toString();
     }
 }
