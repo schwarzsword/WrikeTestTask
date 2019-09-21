@@ -1,7 +1,7 @@
 package schwarzkv.util;
 
-public class MailGenerator {
-    private static final String POSTFIX = "+wpt@wriketask.qaa";
+public class StringGenerator {
+
     private static final int LEN = 6;
 
     public static String generate() {
@@ -13,7 +13,6 @@ public class MailGenerator {
             int index = (int) (AlphaNumericString.length() * Math.random());
             sb.append(AlphaNumericString.charAt(index));
         }
-        sb.append(POSTFIX);
         return sb.toString();
     }
 }

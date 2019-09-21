@@ -9,6 +9,8 @@
     <version>1.0</version>
 
     <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <aspectj.version>1.9.4</aspectj.version>
         <junit.version>4.12</junit.version>
@@ -34,7 +36,7 @@
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-junit4</artifactId>
-            <version>2.13.0</version>
+            <version>2.12.1</version>
             <scope>test</scope>
         </dependency>
 
@@ -42,7 +44,8 @@
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-java-commons</artifactId>
-            <version>2.13.0</version>
+            <version>2.12.1</version>
+            <scope>compile</scope>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
@@ -51,16 +54,20 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>3.0.0-M3</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.25</version>
         </dependency>
+
+
     </dependencies>
 
 
     <build>
-        <finalName>test</finalName>
+        <finalName>wrikeTestTask</finalName>
         <plugins>
             <plugin>
                 <groupId>io.qameta.allure</groupId>

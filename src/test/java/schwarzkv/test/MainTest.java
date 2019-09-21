@@ -11,36 +11,43 @@ import org.junit.Test;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import schwarzkv.config.browser.ChromeConfig;
-import schwarzkv.steps.FirstSteps;
-import schwarzkv.util.MailGenerator;
+import schwarzkv.steps.MainSteps;
+import schwarzkv.steps.SurveySteps;
+import schwarzkv.util.StringGenerator;
 
 public class MainTest {
 
     private WebDriver driver;
-    private FirstSteps firstSteps;
+    private MainSteps mainSteps;
+    private SurveySteps surveySteps;
     private String email;
+    private static final String POSTFIX = "+wpt@wriketask.qaa";
 
     @Before
     public void prepare() {
         driver = ChromeConfig.ChromeDriver();
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        firstSteps = new FirstSteps(driver, js);
-        email = MailGenerator.generate();
+        mainSteps = new MainSteps(driver);
+        surveySteps = new SurveySteps(driver);
+        email = StringGenerator.generate() +  POSTFIX;
     }
 
 
     @Test
-    @DisplayName("Get started functionality test")
-    @Description("Email validation. Q&A test")
-    @Epic("Wrike site test")
-    @Feature("Free trial")
-    @Story("Form submission")
-    public void getStartedTest() {
-        firstSteps
+    @DisplayName("Email and Q&A test")
+    @Description("Check working email submission and redirect. Check working of survey")
+    @Epic("Wrike test task")
+    @Feature("Test case 1")
+    @Story("Email and Q&A test")
+    public void emailAndSurveyTest() {
+        mainSteps
                 .openMain()
                 .clickGetStarted()
                 .typeEmail(email)
                 .submitEmail();
+        surveySteps
+                .setAnswers()
+                .submitSurvey()
+                .checkSuccess();
     }
 
 
