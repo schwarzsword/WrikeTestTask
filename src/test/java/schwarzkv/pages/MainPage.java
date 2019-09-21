@@ -22,4 +22,7 @@ public class MainPage extends Page{
     @FindBy(xpath = "//*[contains(@class,'modal-form-trial__submit')]")
     public WebElement emailSubmit;
 
+    @FindBy(xpath = "//*[1][contains(@class, 'wg-footer__social-item')]//*[contains(@class, 'wg-footer__social-link')]")
+    public WebElement twitterButton;
+
 }

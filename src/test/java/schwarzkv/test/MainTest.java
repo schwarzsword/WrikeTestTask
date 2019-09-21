@@ -8,7 +8,6 @@ import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import schwarzkv.config.browser.ChromeConfig;
 import schwarzkv.steps.MainSteps;
@@ -28,7 +27,7 @@ public class MainTest {
         driver = ChromeConfig.ChromeDriver();
         mainSteps = new MainSteps(driver);
         surveySteps = new SurveySteps(driver);
-        email = StringGenerator.generate() +  POSTFIX;
+        email = StringGenerator.generate() + POSTFIX;
     }
 
 
@@ -48,6 +47,20 @@ public class MainTest {
                 .setAnswers()
                 .submitSurvey()
                 .checkSuccess();
+    }
+
+    @Test
+    @DisplayName("Twitter link and data test")
+    @Description("Check if button redirects to the right place and icon is correct")
+    @Epic("Wrike test task")
+    @Feature("Test case 2")
+    @Story("Twitter link and data test")
+    public void twitterTest() {
+        mainSteps
+                .openMain()
+                .checkLink();
+        mainSteps
+                .checkIcon();
     }
 
 
