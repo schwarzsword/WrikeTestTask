@@ -14,20 +14,22 @@ import schwarzkv.steps.MainSteps;
 import schwarzkv.steps.SurveySteps;
 import schwarzkv.util.StringGenerator;
 
+import static schwarzkv.config.Properties.POSTFIX;
+
 public class MainTest {
 
     private WebDriver driver;
     private MainSteps mainSteps;
     private SurveySteps surveySteps;
     private String email;
-    private static final String POSTFIX = "+wpt@wriketask.qaa";
+
 
     @Before
     public void prepare() {
         driver = ChromeConfig.ChromeDriver();
         mainSteps = new MainSteps(driver);
         surveySteps = new SurveySteps(driver);
-        email = StringGenerator.generate() + POSTFIX;
+        email = StringGenerator.generate(50) + POSTFIX;
     }
 
 

@@ -9,10 +9,11 @@ import schwarzkv.util.StringGenerator;
 
 import java.util.Random;
 
+import static schwarzkv.config.Properties.TIMEOUT;
+
 public class SurveySteps {
     private SurveyPage page;
     private WebDriver driver;
-    private static final int TIMEOUT = 5;
 
 
     public SurveySteps(WebDriver driver) {
@@ -27,7 +28,7 @@ public class SurveySteps {
         page.options.get(random.nextInt(5) + 2).click();
         page.options.get(random.nextInt(3) + 7).click();
         if (page.otherInput.isDisplayed())
-            page.otherInput.sendKeys(StringGenerator.generate());
+            page.otherInput.sendKeys(StringGenerator.generate(10));
         return this;
     }
 
