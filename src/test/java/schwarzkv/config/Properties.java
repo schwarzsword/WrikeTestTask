@@ -2,8 +2,8 @@ package schwarzkv.config;
 
 public class Properties {
 
-    public static final String DRIVER_PATH = "src/main/resources/chromedriver";
-    public static final String DRIVER_SYSTEM_PROPERTY = "webdriver.chrome.driver";
+    public static final String CHROME_PATH = "src/main/resources/chromedriver";
+    public static final String CHROME_SYSTEM_PROPERTY = "webdriver.chrome.driver";
     public static final String WRIKE_URL = "https://www.wrike.com/";
     public static final String POSTFIX = "+wpt@wriketask.qaa";
     public static final String RESEND_URL = "https://www.wrike.com/resend/";

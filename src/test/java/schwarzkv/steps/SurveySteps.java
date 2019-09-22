@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import schwarzkv.pages.SurveyPage;
-import schwarzkv.util.StringGenerator;
 
 import java.util.Random;
 
@@ -21,14 +20,16 @@ public class SurveySteps {
         page = new SurveyPage(this.driver);
     }
 
+
     @Step("5. Fill the survey")
-    public SurveySteps setAnswers() {
+    public SurveySteps setAnswers(String msg) {
         Random random = new Random();
         page.options.get(random.nextInt(2)).click();
         page.options.get(random.nextInt(5) + 2).click();
         page.options.get(random.nextInt(3) + 7).click();
-        if (page.otherInput.isDisplayed())
-            page.otherInput.sendKeys(StringGenerator.generate(10));
+        if (page.otherInput.isDisplayed()) {
+            page.otherInput.sendKeys(msg);
+        }
         return this;
     }
 

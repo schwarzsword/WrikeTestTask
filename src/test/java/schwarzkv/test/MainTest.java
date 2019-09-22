@@ -22,7 +22,7 @@ public class MainTest {
     private MainSteps mainSteps;
     private SurveySteps surveySteps;
     private String email;
-
+    private String otherMessage;
 
     @Before
     public void prepare() {
@@ -30,6 +30,7 @@ public class MainTest {
         mainSteps = new MainSteps(driver);
         surveySteps = new SurveySteps(driver);
         email = StringGenerator.generate(50) + POSTFIX;
+        otherMessage = StringGenerator.generate(20);
     }
 
 
@@ -46,7 +47,7 @@ public class MainTest {
                 .typeEmail(email)
                 .submitEmail();
         surveySteps
-                .setAnswers()
+                .setAnswers(otherMessage)
                 .submitSurvey()
                 .checkSuccess();
     }
