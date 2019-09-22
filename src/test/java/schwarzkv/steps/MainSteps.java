@@ -36,14 +36,14 @@ public class MainSteps {
     @Step("3. Type given email - {email}")
     public MainSteps typeEmail(String email) {
         page.emailInput.sendKeys(email);
-        return this; //TODO сделать хорошо
+        return this;
     }
 
     @Step("4. Submit form")
     public MainSteps submitEmail() {
         page.emailSubmit.click();
         new WebDriverWait(driver, TIMEOUT)
-                .withMessage("Invalid url, expecter URL is " + RESEND_URL)
+                .withMessage("Invalid url, expected URL is " + RESEND_URL)
                 .until(ExpectedConditions.urlMatches(RESEND_URL));
         return this;
     }
