@@ -12,10 +12,11 @@ import org.openqa.selenium.WebDriver;
 import schwarzkv.config.browser.ChromeConfig;
 import schwarzkv.steps.MainSteps;
 import schwarzkv.steps.SurveySteps;
-import schwarzkv.util.StringGenerator;
 
 import static schwarzkv.config.Properties.POSTFIX;
+import static schwarzkv.util.StringGenerator.generateRandomString;
 
+@Epic("Wrike site test")
 public class MainTest {
 
     private WebDriver driver;
@@ -29,16 +30,15 @@ public class MainTest {
         driver = ChromeConfig.ChromeDriver();
         mainSteps = new MainSteps(driver);
         surveySteps = new SurveySteps(driver);
-        email = StringGenerator.generate(50) + POSTFIX;
-        otherMessage = StringGenerator.generate(20);
+        email = generateRandomString(50) + POSTFIX;
+        otherMessage = generateRandomString(20);
     }
 
 
     @Test
     @DisplayName("Email and Q&A test")
     @Description("Check working email submission and redirect. Check working of survey")
-    @Epic("Wrike test task")
-    @Feature("Test case 1")
+    @Feature("Getting started test")
     @Story("Email and Q&A test")
     public void emailAndSurveyTest() {
         mainSteps
@@ -55,8 +55,7 @@ public class MainTest {
     @Test
     @DisplayName("Twitter link and data test")
     @Description("Check if button redirects to the right place and icon is correct")
-    @Epic("Wrike test task")
-    @Feature("Test case 2")
+    @Feature("Footer test")
     @Story("Twitter link and data test")
     public void twitterTest() {
         mainSteps

@@ -2,7 +2,7 @@ package schwarzkv.util;
 
 public class StringGenerator {
 
-    public static String generate(int length) {
+    public static String generateRandomString(int length) {
         String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 + "0123456789"
                 + "abcdefghijklmnopqrstuvxyz";

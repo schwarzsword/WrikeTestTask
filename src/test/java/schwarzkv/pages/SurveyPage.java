@@ -14,7 +14,7 @@ public class SurveyPage extends Page {
     @FindBy(xpath = "//*[contains(@class,'survey-form')]//*[contains(@class,'switch__button')]")
     public List<WebElement> options;
 
-    @FindBy(xpath = "//input[contains(@type,'text')]")
+    @FindBy(xpath = "//*[contains(@class,'switch__input')]")
     public WebElement otherInput;
 
     @FindBy(xpath = "//*[contains(@class,'js-survey-submit')]")

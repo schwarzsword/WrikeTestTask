@@ -21,7 +21,7 @@ public class SurveySteps {
     }
 
 
-    @Step("5. Fill the survey")
+    @Step("Fill the survey")
     public SurveySteps setAnswers(String msg) {
         Random random = new Random();
         page.options.get(random.nextInt(2)).click();
@@ -33,18 +33,19 @@ public class SurveySteps {
         return this;
     }
 
-    @Step("6. Submit the survey")
+    @Step("Submit the survey")
     public SurveySteps submitSurvey() {
+        new WebDriverWait(driver, TIMEOUT)
+                .until(ExpectedConditions.visibilityOf(page.surveySubmit));
         page.surveySubmit.click();
         return this;
     }
 
-    @Step("7. Check if submit is successful")
-    public SurveySteps checkSuccess() {
+    @Step("Check if submit is successful")
+    public void checkSuccess() {
         new WebDriverWait(driver, TIMEOUT)
                 .withMessage("Submit failed")
                 .until(ExpectedConditions.visibilityOf(page.message));
-        return this;
     }
 
 

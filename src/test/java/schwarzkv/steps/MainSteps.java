@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import schwarzkv.pages.MainPage;
 
+import static org.junit.Assert.assertEquals;
 import static schwarzkv.config.Properties.*;
 
 public class MainSteps {
@@ -21,26 +22,30 @@ public class MainSteps {
         page = new MainPage(this.driver);
     }
 
-    @Step("1. Open main page")
+    @Step("Open main page")
     public MainSteps openMain() {
         driver.get(WRIKE_URL);
         return this;
     }
 
-    @Step("2. Click \"Get started for free\" button in header")
+    @Step("Click \"Get started for free\" button in header")
     public MainSteps clickGetStarted() {
+        new WebDriverWait(driver, TIMEOUT)
+                .until(ExpectedConditions.visibilityOf(page.startButton));
         page.startButton.click();
         return this;
     }
 
-    @Step("3. Type given email - {email}")
+    @Step("Type given email - {email}")
     public MainSteps typeEmail(String email) {
         page.emailInput.sendKeys(email);
         return this;
     }
 
-    @Step("4. Submit form")
+    @Step("Submit form")
     public MainSteps submitEmail() {
+        new WebDriverWait(driver, TIMEOUT)
+                .until(ExpectedConditions.visibilityOf(page.emailSubmit));
         page.emailSubmit.click();
         new WebDriverWait(driver, TIMEOUT)
                 .withMessage("Invalid url, expected URL is " + RESEND_URL)
@@ -48,16 +53,16 @@ public class MainSteps {
         return this;
     }
 
-    @Step("1. Check if twitter button leads to wrike twitter")
+    @Step("Check if twitter button leads to wrike twitter")
     public void checkLink() {
-        Assert.assertEquals(page.twitterButton.getAttribute("href"), TWITTER_URL);
+        assertEquals(page.twitterButton.getAttribute("href"), TWITTER_URL);
     }
 
-    @Step("2. Check if icon is proper")
+    @Step("Check if icon is proper")
     public void checkIcon() {
         driver.get(WRIKE_URL + ICON_URL);
         WebElement element = driver.findElement(By.xpath("//*[@id='twitter']//*[@d]"));
-        Assert.assertEquals(element.getAttribute("d"), SVG);
-        Assert.assertEquals(element.getAttribute("fill"), ICON_FILL);
+        assertEquals(element.getAttribute("d"), SVG);
+        assertEquals(element.getAttribute("fill"), ICON_FILL);
     }
 }
